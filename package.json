@@ -1,0 +1,8 @@
+{
+  "name": "challenge-charlie",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:RonaldoSetzer/challenge-charlie.git",
+  "author": "Ronaldo Santiago <ronaldo.setzer@gmail.com>",
+  "license": "MIT"
+}
