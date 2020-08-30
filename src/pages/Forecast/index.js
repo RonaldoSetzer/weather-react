@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+import PhotoBackground from '../../components/PhotoBackground';
 
 function Forecast() {
-  return <h1>Forecast page</h1>;
+  return (
+    <div>
+      Forecast
+      <PhotoBackground />
+    </div>
+  );
 }
 
 export default Forecast;
