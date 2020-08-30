@@ -1,13 +1,13 @@
 import React from 'react';
 
 import GlobalStyles from './styles/global';
-import logo from '../static/assets/images/code-with-beer.png';
+import Forecast from './pages/Forecast';
 
 function App() {
   return (
     <React.Fragment>
       <GlobalStyles />
-      <img src={logo} />
+      <Forecast />
     </React.Fragment>
   );
 }
