@@ -6,6 +6,7 @@
   "author": "Ronaldo Santiago <ronaldo.setzer@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "proxy": "PORT=3001 yarn cors-proxy-server",
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
