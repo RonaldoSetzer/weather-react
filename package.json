@@ -6,8 +6,8 @@
   "author": "Ronaldo Santiago <ronaldo.setzer@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --progress",
-    "build": "webpack --mode=production"
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
     "react": "^16.13.1",
