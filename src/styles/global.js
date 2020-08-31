@@ -30,10 +30,15 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     background: #282828;
+    color: #fff;
+    font-family:  'Baloo 2', Helvetica, Arial, sans-serif;
   }
 
   button {
     cursor: pointer;
+    color: #fff;
+    font-family: inherit;
+    font-size: inherit;
   }
 
   a {
