@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { theme } from '../utils/colors';
 
 const GlobalStyles = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -32,6 +33,11 @@ const GlobalStyles = createGlobalStyle`
     background: #282828;
     color: #fff;
     font-family:  'Baloo 2', Helvetica, Arial, sans-serif;
+
+    --color-default: ${theme.colorDefault};
+    --color-inverse: ${theme.colorInverse};
+    --background-default: ${theme.backgroundDefault};
+    --background-inverse: ${theme.backgroundInverse};
   }
 
   button {
@@ -39,6 +45,10 @@ const GlobalStyles = createGlobalStyle`
     color: #fff;
     font-family: inherit;
     font-size: inherit;
+  }
+
+  input {
+    font-family: inherit;
   }
 
   a {
