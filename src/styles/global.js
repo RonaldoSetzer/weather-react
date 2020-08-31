@@ -29,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: #221a0e;
+    background: #282828;
   }
 
   button {
@@ -46,4 +46,3 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export default GlobalStyles;
-
