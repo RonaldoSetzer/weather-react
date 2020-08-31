@@ -1,10 +1,10 @@
-import { opacify, lighten, darken } from 'polished';
+import { transparentize, lighten, darken } from 'polished';
 
 export const palette = {
   gray: '#928374',
   blue: '#83a598',
   yellow: '#fabd2f',
-  red: '#fb4934',
+  red: '#fe8019',
   dark: '#282828',
   white: '#FFFFFF',
 };
@@ -18,23 +18,27 @@ export const theme = {
 
 export const colorlevels = {
   gray: [
-    opacify(0.7, palette.gray),
-    opacify(0.7, lighten(0.1, palette.gray)),
-    opacify(0.7, darken(0.2, palette.gray)),
+    transparentize(0.3, palette.gray),
+    transparentize(0.3, lighten(0.1, palette.gray)),
+    transparentize(0.3, darken(0.2, palette.gray)),
+    transparentize(0.2, darken(0.5, palette.gray)),
   ],
   blue: [
-    opacify(0.7, palette.blue),
-    opacify(0.7, lighten(0.1, palette.blue)),
-    opacify(0.7, darken(0.2, palette.blue)),
+    transparentize(0.3, palette.blue),
+    transparentize(0.3, lighten(0.1, palette.blue)),
+    transparentize(0.3, darken(0.2, palette.blue)),
+    transparentize(0.2, darken(0.5, palette.blue)),
   ],
   yellow: [
-    opacify(0.7, palette.yellow),
-    opacify(0.7, lighten(0.1, palette.yellow)),
-    opacify(0.7, darken(0.2, palette.yellow)),
+    transparentize(0.3, palette.yellow),
+    transparentize(0.3, lighten(0.1, palette.yellow)),
+    transparentize(0.3, darken(0.2, palette.yellow)),
+    transparentize(0.2, darken(0.5, palette.yellow)),
   ],
   red: [
-    opacify(0.7, palette.red),
-    opacify(0.7, lighten(0.1, palette.red)),
-    opacify(0.7, darken(0.2, palette.red)),
+    transparentize(0.3, palette.red),
+    transparentize(0.3, lighten(0.1, palette.red)),
+    transparentize(0.3, darken(0.2, palette.red)),
+    transparentize(0.2, darken(0.5, palette.red)),
   ],
 };
