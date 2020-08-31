@@ -31,5 +31,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off',
     'no-param-reassign': 'off',
+    'no-console': ['error', { allow: ['tron'] }],
   },
 };
