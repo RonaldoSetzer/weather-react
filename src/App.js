@@ -2,12 +2,15 @@ import React from 'react';
 
 import GlobalStyles from './styles/global';
 import Forecast from './pages/Forecast';
+import PhotoBackground from './components/PhotoBackground';
 
 function App() {
   return (
     <React.Fragment>
       <GlobalStyles />
-      <Forecast />
+      <PhotoBackground>
+        <Forecast />
+      </PhotoBackground>
     </React.Fragment>
   );
 }
