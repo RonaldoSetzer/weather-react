@@ -5,6 +5,7 @@ import GlobalStyles from './styles/global';
 import Forecast from './pages/Forecast';
 import PhotoBackground from './components/PhotoBackground';
 
+import './config/Reactotron';
 import store from './store';
 
 function App() {
