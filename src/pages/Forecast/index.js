@@ -8,9 +8,9 @@ import { ClearDay } from '../../assets/icons';
 import { colorlevels } from '../../utils/colors';
 import { Title, List } from '../../components/ui';
 
-import { Container } from './styles';
+import { Container, Background } from './styles';
 
-const [normal, lighten, darken] = colorlevels.yellow;
+const [normal, lighten, darken, darkest] = colorlevels.yellow;
 
 const weather = {
   today: {
@@ -41,32 +41,34 @@ function Forecast() {
   const { today, tomorrow, afterTomorrow } = weather;
 
   return (
-    <Container>
-      <SearchBox />
-      <WeatherCard
-        label={today.label}
-        icon={today.icon}
-        temperature={today.temperature}
-        backgroundColor={today.backgroundColor}
-      >
-        <WeatherInfo
-          title={today.info.type}
-          wind={today.info.wind}
-          humidity={today.info.humidity}
-          pressure={today.info.pressure}
+    <Background background={darkest}>
+      <Container>
+        <SearchBox />
+        <WeatherCard
+          label={today.label}
+          icon={today.icon}
+          temperature={today.temperature}
+          backgroundColor={today.backgroundColor}
+        >
+          <WeatherInfo
+            title={today.info.type}
+            wind={today.info.wind}
+            humidity={today.info.humidity}
+            pressure={today.info.pressure}
+          />
+        </WeatherCard>
+        <WeatherCard
+          label={tomorrow.label}
+          temperature={tomorrow.temperature}
+          backgroundColor={tomorrow.backgroundColor}
         />
-      </WeatherCard>
-      <WeatherCard
-        label={tomorrow.label}
-        temperature={tomorrow.temperature}
-        backgroundColor={tomorrow.backgroundColor}
-      />
-      <WeatherCard
-        label={afterTomorrow.label}
-        temperature={afterTomorrow.temperature}
-        backgroundColor={afterTomorrow.backgroundColor}
-      />
-    </Container>
+        <WeatherCard
+          label={afterTomorrow.label}
+          temperature={afterTomorrow.temperature}
+          backgroundColor={afterTomorrow.backgroundColor}
+        />
+      </Container>
+    </Background>
   );
 }
 
