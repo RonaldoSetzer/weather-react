@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function PictureBackground() {
+import { Container } from './styles';
+
+function PhotoBackground({ children }) {
   const [img, setImg] = useState(null);
   useEffect(() => {
     axios
@@ -9,7 +11,7 @@ function PictureBackground() {
         'http://localhost:3001/https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=pt-BR',
         {
           headers: {
-            Origin: '*',
+            Origin: 'x-requested-with',
             'Access-Control-Allow-Origin': '*',
           },
         },
@@ -20,7 +22,7 @@ function PictureBackground() {
         setImg(imgUrl);
       });
   }, []);
-  return <div>{img && <img src={img} />}</div>;
+  return <Container background={img}>{children}</Container>;
 }
 
-export default PictureBackground;
+export default PhotoBackground;
