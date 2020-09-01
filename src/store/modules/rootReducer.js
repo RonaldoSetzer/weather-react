@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
 
-function reduxExemple(state = [], action) {
-  return state;
-}
+import background from './background/reducer';
 
-export default combineReducers({ reduxExemple });
+export default combineReducers({ background });
