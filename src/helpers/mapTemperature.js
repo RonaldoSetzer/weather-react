@@ -3,11 +3,11 @@ import { colorlevels } from '../utils/colors';
 export function convertToFahrenheit(celsius) {
   let fahrenheit = (celsius * 9) / 5 + 32;
 
-  return fahrenheit;
+  return fahrenheit.toFixed(1);
 }
 
 export function formatCelsiusText(celsius) {
-  return celsius ? `${celsius} ˚C` : '--';
+  return celsius ? `${celsius.toFixed(1)} ˚C` : '--';
 }
 
 export function formatFahrenheitText(celsius) {
