@@ -14,20 +14,22 @@ export function formatFahrenheitText(celsius) {
   return celsius ? `${convertToFahrenheit(celsius)} F` : '--';
 }
 
-export function handleBackgroundColor(celsius, forecastIndex) {
+export function getBgColorByTemperature(celsius, forecastIndex = 3) {
+  const index = Math.min(forecastIndex, 3);
+
   if (celsius < 15) {
-    return colorlevels.blue[forecastIndex || 0];
+    return colorlevels.blue[index];
   } else if (celsius <= 35) {
-    return colorlevels.yellow[forecastIndex || 0];
+    return colorlevels.yellow[index];
   } else if (celsius > 35) {
-    return colorlevels.red[forecastIndex || 0];
+    return colorlevels.red[index];
   }
 
-  return colorlevels.gray[forecastIndex || 0];
+  return colorlevels.gray[index];
 }
 
-export default function mapTemperature(celsius, forecastIndex) {
-  const backgroundColor = handleBackgroundColor(celsius, forecastIndex);
+export function mapTemperature(celsius, forecastIndex) {
+  const backgroundColor = getBgColorByTemperature(celsius, forecastIndex);
 
   return {
     temperature: {

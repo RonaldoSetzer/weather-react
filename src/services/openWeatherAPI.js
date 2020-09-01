@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import mapTemperature from '../helpers/mapTemperature';
+import { mapTemperature } from '../helpers/temperature';
 
 const OPEN_WEATHER_API_URL = 'http://api.openweathermap.org/data/2.5';
 const OPEN_WEATHER_KEY = '7ba73e0eb8efe773ed08bfd0627f07b8';

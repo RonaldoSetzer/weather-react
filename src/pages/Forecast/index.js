@@ -9,7 +9,7 @@ import { ClearDay } from '../../assets/icons';
 import { Title, List } from '../../components/ui';
 
 import { Container, Background } from './styles';
-import { handleBackgroundColor } from '../../helpers/mapTemperature';
+import { getBgColorByTemperature } from '../../helpers/temperature';
 
 import { requestForecast } from '../../store/modules/weather/actions';
 
@@ -27,7 +27,7 @@ function Forecast() {
   );
 
   const [tempUnit, setTempUnit] = useState('celsius');
-  const background = handleBackgroundColor(today.celsius, 3);
+  const background = getBgColorByTemperature();
 
   function handleSearch(city) {
     dispatch(requestForecast(city));

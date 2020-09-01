@@ -1,4 +1,4 @@
-import mapTemperature from '../../../helpers/mapTemperature';
+import { mapTemperature } from '../../../helpers/temperature';
 
 const initialState = {
   weather: null,
