@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import SearchBox from '../../components/SearchBox';
 import WeatherCard from '../../components/WeatherCard';
@@ -38,12 +39,13 @@ const weather = {
 };
 
 function Forecast() {
+  const dispatch = useDispatch();
   const { today, tomorrow, afterTomorrow } = weather;
 
   return (
     <Background background={darkest}>
       <Container>
-        <SearchBox />
+        <SearchBox dispatch={dispatch} />
         <WeatherCard
           label={today.label}
           icon={today.icon}

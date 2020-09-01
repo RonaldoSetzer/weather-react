@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Form = styled.form`
   display: flex;
   align-items: center;
   background: var(--background-inverse);
