@@ -12,6 +12,7 @@ import { Container, Background } from './styles';
 import { getBgColorByTemperature } from '../../helpers/temperature';
 
 import { requestForecast } from '../../store/modules/forecast/actions';
+import { requestWeather } from '../../store/modules/weather/actions';
 
 const info = {
   type: 'Sunny',
@@ -22,6 +23,7 @@ const info = {
 
 function Forecast() {
   const dispatch = useDispatch();
+  const weather = useSelector(state => state.weather);
   const { today, tomorrow, afterTomorrow } = useSelector(
     state => state.forecast,
   );
@@ -30,6 +32,7 @@ function Forecast() {
   const background = getBgColorByTemperature();
 
   function handleSearch(city) {
+    dispatch(requestWeather(city));
     dispatch(requestForecast(city));
   }
 
@@ -49,14 +52,12 @@ function Forecast() {
           handleUnit={toggleTempUnit}
           {...today}
         >
-          {info && (
-            <WeatherInfo
-              title={info.type}
-              wind={info.wind}
-              humidity={info.humidity}
-              pressure={info.pressure}
-            />
-          )}
+          <WeatherInfo
+            title={info.type}
+            wind={weather.wind}
+            humidity={weather.humidity}
+            pressure={weather.pressure}
+          />
         </WeatherCard>
         <WeatherCard
           label="Tomorrow"
