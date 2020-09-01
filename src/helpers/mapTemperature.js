@@ -30,8 +30,10 @@ export default function mapTemperature(celsius, forecastIndex) {
   const backgroundColor = handleBackgroundColor(celsius, forecastIndex);
 
   return {
-    celsius: formatCelsiusText(celsius),
-    fahrenheit: formatFahrenheitText(celsius),
+    temperature: {
+      celsius: formatCelsiusText(celsius),
+      fahrenheit: formatFahrenheitText(celsius),
+    },
     backgroundColor,
   };
 }

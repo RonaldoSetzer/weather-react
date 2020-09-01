@@ -5,7 +5,7 @@ import { Title } from '../../components/ui';
 
 function WeatherCard(props) {
   const { label, icon, backgroundColor, children } = props;
-  const { celsius, fahrenheit, tempUnit, handleUnit } = props;
+  const { temperature, tempUnit, handleUnit } = props;
 
   function handleClick(e) {
     e.preventDefault();
@@ -17,9 +17,7 @@ function WeatherCard(props) {
       <IconContainer>{icon}</IconContainer>
       <Content>
         <Title uppercase>{label}</Title>
-        <Button onClick={handleClick}>
-          {tempUnit === 'celsius' ? celsius : fahrenheit}
-        </Button>
+        <Button onClick={handleClick}>{temperature[tempUnit]}</Button>
         {children && children}
       </Content>
     </Container>
