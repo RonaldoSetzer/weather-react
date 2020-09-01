@@ -15,29 +15,8 @@ function extractTemperature({ main: { temp } }) {
 function* requestForecast({ city }) {
   const payload = yield call(getForecast, city);
 
-  if (payload.data.list) {
-    const [today, tomorrow, afterTomorrow] = payload.data.list;
-    const {
-      weather,
-      wind,
-      main: { humidity, pressure },
-    } = today;
-
-    const weatherInfo = {
-      weather: weather[0],
-      wind,
-      pressure,
-      humidity,
-    };
-
-    yield put(
-      updateWeather({
-        today: extractTemperature(today),
-        tomorrow: extractTemperature(tomorrow),
-        afterTomorrow: extractTemperature(afterTomorrow),
-        weather: weatherInfo,
-      }),
-    );
+  if (payload) {
+    yield put(updateWeather(payload));
   }
 }
 
