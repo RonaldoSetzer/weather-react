@@ -1,28 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import { Container } from './styles';
+import { requestBingImageOfDay } from '../../store/modules/background/actions';
 
 function PhotoBackground({ children }) {
-  const [img, setImg] = useState(null);
+  const dispatcher = useDispatch();
+  const { url } = useSelector(state => state.background);
+
   useEffect(() => {
-    axios
-      .get(
-        'http://localhost:3001/https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=pt-BR',
-        {
-          headers: {
-            Origin: 'x-requested-with',
-            'Access-Control-Allow-Origin': '*',
-          },
-        },
-      )
-      .then(({ data }) => {
-        const { url } = data.images.pop();
-        const imgUrl = `http://www.bing.com${url}`;
-        setImg(imgUrl);
-      });
+    dispatcher(requestBingImageOfDay());
   }, []);
-  return <Container background={img}>{children}</Container>;
+
+  return <Container background={url}>{children}</Container>;
 }
 
 export default PhotoBackground;
