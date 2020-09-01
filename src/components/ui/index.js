@@ -4,6 +4,12 @@ export const Title = styled.h1`
   line-height: 1.2rem;
   font-size: 1.2rem;
   ${props => props.uppercase && 'text-transform: uppercase;'}
+
+  ${props =>
+    props.capitalize &&
+    `&:first-letter {
+      text-transform: capitalize;
+    }`}
 `;
 
 export const List = styled.ul`
@@ -16,4 +22,3 @@ export const List = styled.ul`
     font-size: 1rem;
   }
 `;
-
