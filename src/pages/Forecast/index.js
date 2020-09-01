@@ -14,13 +14,6 @@ import { getBgColorByTemperature } from '../../helpers/temperature';
 import { requestForecast } from '../../store/modules/forecast/actions';
 import { requestWeather } from '../../store/modules/weather/actions';
 
-const info = {
-  type: 'Sunny',
-  wind: 'NO 6.4km/h',
-  humidity: '78%',
-  pressure: '1003hPA',
-};
-
 function Forecast() {
   const dispatch = useDispatch();
   const weather = useSelector(state => state.weather);
@@ -52,12 +45,7 @@ function Forecast() {
           handleUnit={toggleTempUnit}
           {...today}
         >
-          <WeatherInfo
-            title={info.type}
-            wind={weather.wind}
-            humidity={weather.humidity}
-            pressure={weather.pressure}
-          />
+          <WeatherInfo {...weather} />
         </WeatherCard>
         <WeatherCard
           label="Tomorrow"

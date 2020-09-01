@@ -3,12 +3,12 @@ import React from 'react';
 import { Title, List } from '../../components/ui';
 import { Container } from './styles';
 
-function WeatherInfo({ title, wind, humidity, pressure }) {
+function WeatherInfo({ description, wind, humidity, pressure }) {
   return (
     <Container>
-      <Title>{title}</Title>
+      <Title capitalize>{description}</Title>
       <List>
-        <li>Wing: {wind}</li>
+        <li>Wind: {wind}</li>
         <li>Humidity: {humidity}</li>
         <li>Pressure: {pressure}</li>
       </List>

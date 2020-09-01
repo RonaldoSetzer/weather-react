@@ -36,13 +36,21 @@ export function getWeather(city) {
   const url = ''.concat(OPEN_WEATHER_API_URL, OPEN_WEATHER_WEATHER_API, params);
 
   return axios.get(url).then(({ data }) => {
-    console.log(data);
     const {
+      weather,
       wind,
       main: { humidity, pressure },
     } = data;
-    const restult = mapWeather({ wind, humidity, pressure });
-    console.log(restult);
-    return restult;
+
+    console.log(data);
+    const { description } = weather[0];
+
+    const result = mapWeather({
+      description,
+      wind,
+      humidity,
+      pressure,
+    });
+    return result;
   });
 }
