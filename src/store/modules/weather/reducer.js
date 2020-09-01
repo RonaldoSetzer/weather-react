@@ -1,8 +1,6 @@
-const initialState = {
-  wind: '',
-  humidity: '',
-  pressure: '',
-};
+import { mapWeather } from '../../../helpers/weather';
+
+const initialState = mapWeather({});
 
 function weather(state = initialState, action) {
   switch (action.type) {
