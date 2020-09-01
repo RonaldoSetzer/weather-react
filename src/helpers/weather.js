@@ -30,12 +30,18 @@ export function formatHumidty(value) {
   return value ? `${value}%` : '--';
 }
 
+export function formatDescription(value) {
+  return value || '--';
+}
+
 export function mapWeather({
   pressure,
   humidity,
+  description,
   wind = { speed: undefined, deg: undefined },
 }) {
   return {
+    description: formatDescription(description),
     wind: formatWind(wind),
     pressure: formatPressure(pressure),
     humidity: formatHumidty(humidity),
