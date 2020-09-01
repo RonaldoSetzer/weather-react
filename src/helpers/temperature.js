@@ -17,15 +17,15 @@ export function formatFahrenheitText(celsius) {
 export function getBgColorByTemperature(celsius, forecastIndex = 3) {
   const index = Math.min(forecastIndex, 3);
 
-  if (celsius < 15) {
-    return colorlevels.blue[index];
-  } else if (celsius <= 35) {
-    return colorlevels.yellow[index];
+  if (!celsius) {
+    return colorlevels.gray[index];
   } else if (celsius > 35) {
     return colorlevels.red[index];
+  } else if (celsius > 15) {
+    return colorlevels.yellow[index];
+  } else if (celsius >= 0) {
+    return colorlevels.blue[index];
   }
-
-  return colorlevels.gray[index];
 }
 
 export function mapTemperature(celsius, forecastIndex) {
