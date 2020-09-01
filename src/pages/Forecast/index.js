@@ -12,6 +12,8 @@ import { Title, List } from '../../components/ui';
 import { Container, Background } from './styles';
 import { handleBackgroundColor } from '../../helpers/mapTemperature';
 
+import { requestForecast } from '../../store/modules/weather/actions';
+
 const info = {
   type: 'Sunny',
   wind: 'NO 6.4km/h',
@@ -26,10 +28,14 @@ function Forecast() {
   );
   const background = handleBackgroundColor(today.celsius, 3);
 
+  function handleSearch(city) {
+    dispatch(requestForecast(city));
+  }
+
   return (
     <Background background={background}>
       <Container>
-        <SearchBox dispatch={dispatch} />
+        <SearchBox handleSearch={handleSearch} />
         <WeatherCard label="Today" icon={<ClearDay />} {...today}>
           {weather && (
             <WeatherInfo

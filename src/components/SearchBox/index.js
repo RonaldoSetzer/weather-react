@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 
 import { Form } from './styles';
 import { Compass } from '../../assets/icons';
-import { requestForecast } from '../../store/modules/weather/actions';
 
-function SearchBox({ dispatch }) {
+function SearchBox({ handleSearch }) {
   const [city, setCity] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(requestForecast(city));
+    handleSearch(city);
   }
 
   function handleChange(e) {
