@@ -1,7 +1,7 @@
-export function updateWeather(weather) {
+export function updateForecast(forecast) {
   return {
-    type: '@weather/UPDATE',
-    weather,
+    type: '@forecast/UPDATE',
+    forecast,
   };
 }
 

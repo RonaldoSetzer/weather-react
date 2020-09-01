@@ -1,21 +1,19 @@
 import { mapTemperature } from '../../../helpers/temperature';
 
 const initialState = {
-  weather: null,
   today: mapTemperature(null, 0),
   tomorrow: mapTemperature(null, 1),
   afterTomorrow: mapTemperature(null, 2),
 };
-console.log(initialState)
 
-function weather(state = initialState, action) {
+function forecast(state = initialState, action) {
   switch (action.type) {
-    case '@weather/UPDATE': {
-      return { ...action.weather };
+    case '@forecast/UPDATE': {
+      return { ...action.forecast };
     }
     default:
       return state;
   }
 }
 
-export default weather;
+export default forecast;

@@ -11,7 +11,7 @@ import { Title, List } from '../../components/ui';
 import { Container, Background } from './styles';
 import { getBgColorByTemperature } from '../../helpers/temperature';
 
-import { requestForecast } from '../../store/modules/weather/actions';
+import { requestForecast } from '../../store/modules/forecast/actions';
 
 const info = {
   type: 'Sunny',
@@ -22,8 +22,8 @@ const info = {
 
 function Forecast() {
   const dispatch = useDispatch();
-  const { today, tomorrow, afterTomorrow, weather } = useSelector(
-    state => state.weather,
+  const { today, tomorrow, afterTomorrow } = useSelector(
+    state => state.forecast,
   );
 
   const [tempUnit, setTempUnit] = useState('celsius');
@@ -49,7 +49,7 @@ function Forecast() {
           handleUnit={toggleTempUnit}
           {...today}
         >
-          {weather && (
+          {info && (
             <WeatherInfo
               title={info.type}
               wind={info.wind}

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
 import background from './background/reducer';
-import weather from './weather/reducer';
+import forecast from './forecast/reducer';
 
-export default combineReducers({ background, weather });
+export default combineReducers({ background, forecast });
