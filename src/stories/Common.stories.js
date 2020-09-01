@@ -7,6 +7,8 @@ export const title = () => <Title>Title</Title>;
 
 export const titleWithUppercase = () => <Title uppercase>Title</Title>;
 
+export const titleWithCaptalize = () => <Title capitalize>title</Title>;
+
 export const list = () => (
   <>
     <h1>List</h1>
