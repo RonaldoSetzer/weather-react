@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SearchBox from '../../components/SearchBox';
@@ -6,7 +6,6 @@ import WeatherCard from '../../components/WeatherCard';
 import WeatherInfo from '../../components/WeatherInfo';
 
 import { ClearDay } from '../../assets/icons';
-import { colorlevels } from '../../utils/colors';
 import { Title, List } from '../../components/ui';
 
 import { Container, Background } from './styles';
@@ -26,17 +25,30 @@ function Forecast() {
   const { today, tomorrow, afterTomorrow, weather } = useSelector(
     state => state.weather,
   );
+
+  const [tempUnit, setTempUnit] = useState('celsius');
   const background = handleBackgroundColor(today.celsius, 3);
 
   function handleSearch(city) {
     dispatch(requestForecast(city));
   }
 
+  function toggleTempUnit() {
+    const unit = tempUnit === 'celsius' ? 'fahrenheit' : 'celsius';
+    setTempUnit(unit);
+  }
+
   return (
     <Background background={background}>
       <Container>
         <SearchBox handleSearch={handleSearch} />
-        <WeatherCard label="Today" icon={<ClearDay />} {...today}>
+        <WeatherCard
+          label="Today"
+          icon={<ClearDay />}
+          tempUnit={tempUnit}
+          handleUnit={toggleTempUnit}
+          {...today}
+        >
           {weather && (
             <WeatherInfo
               title={info.type}
@@ -46,8 +58,18 @@ function Forecast() {
             />
           )}
         </WeatherCard>
-        <WeatherCard label="Tomorrow" {...tomorrow} />
-        <WeatherCard label="After Tomorrow" {...afterTomorrow} />
+        <WeatherCard
+          label="Tomorrow"
+          tempUnit={tempUnit}
+          handleUnit={toggleTempUnit}
+          {...tomorrow}
+        />
+        <WeatherCard
+          label="After Tomorrow"
+          tempUnit={tempUnit}
+          handleUnit={toggleTempUnit}
+          {...afterTomorrow}
+        />
       </Container>
     </Background>
   );
