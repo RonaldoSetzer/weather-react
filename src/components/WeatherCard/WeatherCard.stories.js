@@ -12,20 +12,31 @@ const Container = styled.div`
   max-width: 800px;
 `;
 
+const temperature = {
+  celsius: '25 C',
+  fahrenheit: '59 F',
+};
+
 export const component = () => (
-  <WeatherCard label="Amanha" temperature="25 C" backgroundColor={lighten} />
+  <WeatherCard
+    label="Tomorrow"
+    tempUnit="celsius"
+    temperature={temperature}
+    backgroundColor={lighten}
+  />
 );
 
 export const withChildren = () => (
   <Container>
     <WeatherCard
-      label="Hoje"
+      label="Today"
       icon={<ClearDay />}
-      temperature="32 C"
+      tempUnit="fahrenheit"
+      temperature={temperature}
       backgroundColor={normal}
     >
       <WeatherInfo
-        title="Ensolarado"
+        description="Sunny"
         wind="NO 6.4km/h"
         humidity="78%"
         pressure="1003hPA"
