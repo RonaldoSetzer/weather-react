@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import SearchBox from '../../components/SearchBox';
 import WeatherCard from '../../components/WeatherCard';
@@ -10,65 +10,38 @@ import { colorlevels } from '../../utils/colors';
 import { Title, List } from '../../components/ui';
 
 import { Container, Background } from './styles';
+import { handleBackgroundColor } from '../../helpers/mapTemperature';
 
-const [normal, lighten, darken, darkest] = colorlevels.yellow;
-
-const weather = {
-  today: {
-    label: 'Today',
-    icon: <ClearDay />,
-    temperature: '32C',
-    backgroundColor: normal,
-    info: {
-      type: 'Sunny',
-      wind: 'NO 6.4km/h',
-      humidity: '78%',
-      pressure: '1003hPA',
-    },
-  },
-  tomorrow: {
-    label: 'Tomorrow',
-    temperature: '30C',
-    backgroundColor: lighten,
-  },
-  afterTomorrow: {
-    label: 'After Tomorrow',
-    temperature: '30C',
-    backgroundColor: darken,
-  },
+const info = {
+  type: 'Sunny',
+  wind: 'NO 6.4km/h',
+  humidity: '78%',
+  pressure: '1003hPA',
 };
 
 function Forecast() {
   const dispatch = useDispatch();
-  const { today, tomorrow, afterTomorrow } = weather;
+  const { today, tomorrow, afterTomorrow, weather } = useSelector(
+    state => state.weather,
+  );
+  const background = handleBackgroundColor(today.celsius, 3);
 
   return (
-    <Background background={darkest}>
+    <Background background={background}>
       <Container>
         <SearchBox dispatch={dispatch} />
-        <WeatherCard
-          label={today.label}
-          icon={today.icon}
-          temperature={today.temperature}
-          backgroundColor={today.backgroundColor}
-        >
-          <WeatherInfo
-            title={today.info.type}
-            wind={today.info.wind}
-            humidity={today.info.humidity}
-            pressure={today.info.pressure}
-          />
+        <WeatherCard label="Today" icon={<ClearDay />} {...today}>
+          {weather && (
+            <WeatherInfo
+              title={info.type}
+              wind={info.wind}
+              humidity={info.humidity}
+              pressure={info.pressure}
+            />
+          )}
         </WeatherCard>
-        <WeatherCard
-          label={tomorrow.label}
-          temperature={tomorrow.temperature}
-          backgroundColor={tomorrow.backgroundColor}
-        />
-        <WeatherCard
-          label={afterTomorrow.label}
-          temperature={afterTomorrow.temperature}
-          backgroundColor={afterTomorrow.backgroundColor}
-        />
+        <WeatherCard label="Tomorrow" {...tomorrow} />
+        <WeatherCard label="After Tomorrow" {...afterTomorrow} />
       </Container>
     </Background>
   );
