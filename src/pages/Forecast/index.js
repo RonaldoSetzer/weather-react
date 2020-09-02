@@ -5,9 +5,7 @@ import SearchBox from '../../components/SearchBox';
 import WeatherCard from '../../components/WeatherCard';
 import WeatherInfo from '../../components/WeatherInfo';
 
-import { ClearDay } from '../../assets/icons';
 import { Title, List } from '../../components/ui';
-
 import { Container, Background } from './styles';
 import { getBgColorByTemperature } from '../../helpers/temperature';
 
@@ -15,13 +13,11 @@ import { requestForecast } from '../../store/modules/forecast/actions';
 import { requestWeather } from '../../store/modules/weather/actions';
 
 function Forecast() {
-  const dispatch = useDispatch();
-  const weather = useSelector(state => state.weather);
-  const { today, tomorrow, afterTomorrow } = useSelector(
-    state => state.forecast,
-  );
-
   const [tempUnit, setTempUnit] = useState('celsius');
+  const weather = useSelector(state => state.weather);
+  const forecast = useSelector(state => state.forecast);
+  const dispatch = useDispatch();
+
   const background = getBgColorByTemperature();
 
   function handleSearch(city) {
@@ -40,10 +36,10 @@ function Forecast() {
         <SearchBox handleSearch={handleSearch} />
         <WeatherCard
           label="Today"
-          icon={<ClearDay />}
+          iconId={weather.iconId}
           tempUnit={tempUnit}
           handleUnit={toggleTempUnit}
-          {...today}
+          {...forecast.today}
         >
           <WeatherInfo {...weather} />
         </WeatherCard>
@@ -51,13 +47,13 @@ function Forecast() {
           label="Tomorrow"
           tempUnit={tempUnit}
           handleUnit={toggleTempUnit}
-          {...tomorrow}
+          {...forecast.tomorrow}
         />
         <WeatherCard
           label="After Tomorrow"
           tempUnit={tempUnit}
           handleUnit={toggleTempUnit}
-          {...afterTomorrow}
+          {...forecast.afterTomorrow}
         />
       </Container>
     </Background>
