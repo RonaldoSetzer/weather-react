@@ -10,19 +10,15 @@ import { Container, Background } from './styles';
 import { getBgColorByTemperature } from '../../helpers/temperature';
 
 import useSearch from '../../hooks/useSearch';
+import useTemperatureUnit from '../../hooks/useTemperatureUnit';
 
 function Forecast() {
-  const [tempUnit, setTempUnit] = useState('celsius');
   const weather = useSelector(state => state.weather);
   const forecast = useSelector(state => state.forecast);
+  const { unit, toggleUnit } = useTemperatureUnit();
   const { search } = useSearch();
 
   const background = getBgColorByTemperature();
-
-  function toggleTempUnit() {
-    const unit = tempUnit === 'celsius' ? 'fahrenheit' : 'celsius';
-    setTempUnit(unit);
-  }
 
   return (
     <Background background={background}>
@@ -31,22 +27,22 @@ function Forecast() {
         <WeatherCard
           label="Today"
           iconId={weather.iconId}
-          tempUnit={tempUnit}
-          handleUnit={toggleTempUnit}
+          tempUnit={unit}
+          handleUnit={toggleUnit}
           {...forecast.today}
         >
           <WeatherInfo {...weather} />
         </WeatherCard>
         <WeatherCard
           label="Tomorrow"
-          tempUnit={tempUnit}
-          handleUnit={toggleTempUnit}
+          tempUnit={unit}
+          handleUnit={toggleUnit}
           {...forecast.tomorrow}
         />
         <WeatherCard
           label="After Tomorrow"
-          tempUnit={tempUnit}
-          handleUnit={toggleTempUnit}
+          tempUnit={unit}
+          handleUnit={toggleUnit}
           {...forecast.afterTomorrow}
         />
       </Container>
