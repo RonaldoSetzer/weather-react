@@ -2,15 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+  Atmosphere,
   ClearDay,
   ClearNight,
+  CloudDay,
+  CloudNight,
   Clouds,
+  Cloudly,
   Compass,
   Drizzle,
   Loading,
   Rain,
   Snow,
   Thunderstorm,
+  WeatherIcons,
+  getWeatherIconById,
 } from '../assets/icons';
 
 export default {
@@ -22,42 +28,43 @@ const List = styled.ul`
   flex-wrap: wrap;
 
   li {
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     border: 1px solid #fff;
     border-radius: 15px;
     margin: 0.5rem;
+    padding: 0.5rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
+
+  span {
+    padding: 1rem;
+  }
 `;
 
-export const weather = () => (
-  <List>
-    <li>
-      <ClearDay />
-    </li>
-    <li>
-      <ClearNight />
-    </li>
-    <li>
-      <Clouds />
-    </li>
-    <li>
-      <Drizzle />
-    </li>
-    <li>
-      <Rain />
-    </li>
-    <li>
-      <Snow />
-    </li>
-    <li>
-      <Thunderstorm />
-    </li>
-  </List>
-);
+export const weatherIds = () => {
+  return (
+    <List>
+      {Object.keys(WeatherIcons).map(key => {
+        const Item = WeatherIcons[key];
+        return (
+          <li key={key}>
+            <Item />
+            <span>{key}</span>
+          </li>
+        );
+      })}
+    </List>
+  );
+};
+
+export const GetWeatherIconById = () => {
+  const Icon = getWeatherIconById('11d');
+  return <Icon />;
+};
 
 export const misc = () => (
   <List>
