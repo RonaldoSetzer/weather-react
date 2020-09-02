@@ -1,23 +1,23 @@
 import axios from 'axios';
-import queryString from 'querystring';
+
+import { createUrl } from '../utils/client';
 
 const { OPEN_CAGE_API, OPEN_CAGE_KEY } = process.env;
-
-export function createUrl(baseUrl, params) {
-  return `${baseUrl}?${queryString.stringify(params)}`;
-}
 
 export function getLocale(lat, lng) {
   if (!lat || !lng) return;
 
   const params = {
-    q: `${lat},${lng}`,
+    q: [lat, lng].join(','),
     key: OPEN_CAGE_KEY,
   };
 
-  return axios.get(createUrl(OPEN_CAGE_API, q)).then(({ data }) => {
+  const url = createUrl(OPEN_CAGE_API, params);
+
+  return axios.get(url).then(({ data }) => {
     if (data?.results[0]?.components) {
       const { city, state } = data.results[0].components;
+
       return { city, state };
     }
     return data;

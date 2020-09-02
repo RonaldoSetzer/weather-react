@@ -1,18 +1,14 @@
 import axios from 'axios';
-import queryString from 'querystring';
 
 import { mapTemperature } from '../helpers/temperature';
 import { mapWeather } from '../helpers/weather';
+import { createUrl } from '../utils/client';
 
 const {
   OPEN_WEATHER_KEY,
   OPEN_WEATHER_API_FORECAST,
   OPEN_WEATHER_API_WEATHER,
 } = process.env;
-
-export function createUrl(baseUrl, params) {
-  return `${baseUrl}?${queryString.stringify(params)}`;
-}
 
 export function getForecast(city) {
   const params = {
@@ -24,7 +20,7 @@ export function getForecast(city) {
   const url = createUrl(OPEN_WEATHER_API_FORECAST, params);
 
   return axios.get(url).then(({ data }) => {
-    if (data.list) {
+    if (data?.list) {
       const [
         today,
         tomorrow,
@@ -52,7 +48,6 @@ export function getWeather(city) {
       main: { humidity, pressure },
     } = data;
 
-    console.log(data);
     const { description, icon, id } = weather[0];
 
     const result = mapWeather({
