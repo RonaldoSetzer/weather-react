@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import SearchBox from '../../components/SearchBox';
 import WeatherCard from '../../components/WeatherCard';
@@ -9,21 +9,15 @@ import { Title, List } from '../../components/ui';
 import { Container, Background } from './styles';
 import { getBgColorByTemperature } from '../../helpers/temperature';
 
-import { requestForecast } from '../../store/modules/forecast/actions';
-import { requestWeather } from '../../store/modules/weather/actions';
+import useSearch from '../../hooks/useSearch';
 
 function Forecast() {
   const [tempUnit, setTempUnit] = useState('celsius');
   const weather = useSelector(state => state.weather);
   const forecast = useSelector(state => state.forecast);
-  const dispatch = useDispatch();
+  const { search } = useSearch();
 
   const background = getBgColorByTemperature();
-
-  function handleSearch(city) {
-    dispatch(requestWeather(city));
-    dispatch(requestForecast(city));
-  }
 
   function toggleTempUnit() {
     const unit = tempUnit === 'celsius' ? 'fahrenheit' : 'celsius';
@@ -33,7 +27,7 @@ function Forecast() {
   return (
     <Background background={background}>
       <Container>
-        <SearchBox handleSearch={handleSearch} />
+        <SearchBox handleSearch={search} />
         <WeatherCard
           label="Today"
           iconId={weather.iconId}
