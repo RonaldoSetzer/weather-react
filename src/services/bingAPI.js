@@ -1,20 +1,31 @@
 import axios from 'axios';
+import queryString from 'querystring';
 
-const CORS = 'http://localhost:3001';
-const BING_URL = 'https://www.bing.com';
-const BING_IMAGE_OF_DAY_API =
-  'HPImageArchive.aspx?format=js&idx=0&n=1&mkt=pt-BR';
+const { CORS, BING_URL, BING_IMAGE_OF_DAY_API } = process.env;
+
+export function createUrl(baseUrl, params) {
+  return `${baseUrl}?${queryString.stringify(params)}`;
+}
 
 export function getImageOfDay() {
+  const params = {
+    format: 'js',
+    idx: 0,
+    n: 1,
+    mkt: 'pt-BR',
+  };
+
+  const url = createUrl(`${CORS}/${BING_URL}/${BING_IMAGE_OF_DAY_API}`, params);
+
   return axios
-    .get(`${CORS}/${BING_URL}/${BING_IMAGE_OF_DAY_API}`, {
+    .get(url, {
       headers: {
         Origin: 'x-requested-with',
         'Access-Control-Allow-Origin': '*',
       },
     })
     .then(({ data }) => {
-      const { url } = data.images.pop();
+      const { url } = data.images[0];
       const result = { url: `${BING_URL}${url}` };
       return result;
     });
