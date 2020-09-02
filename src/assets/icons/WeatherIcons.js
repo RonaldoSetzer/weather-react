@@ -12,23 +12,7 @@ import Rain from './Rain';
 import Snow from './Snow';
 import Thunderstorm from './Thunderstorm';
 
-export {
-  Atmosphere,
-  ClearDay,
-  ClearNight,
-  CloudDay,
-  CloudNight,
-  Cloudly,
-  Clouds,
-  Compass,
-  Drizzle,
-  Loading,
-  Rain,
-  Snow,
-  Thunderstorm,
-};
-
-export const WeatherIcons = {
+export const ListIcons = {
   '11d': Thunderstorm,
   '09d': Drizzle,
   '13d': Snow,
@@ -44,6 +28,6 @@ export const WeatherIcons = {
   '04n': Cloudly,
 };
 
-export function getWeatherIconById(id) {
-  return WeatherIcons[id];
-}
+export const icons = key => {
+  return ListIcons[key];
+};
