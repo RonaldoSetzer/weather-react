@@ -1,20 +1,27 @@
 import axios from 'axios';
+import queryString from 'querystring';
 
 import { mapTemperature } from '../helpers/temperature';
 import { mapWeather } from '../helpers/weather';
 
-const OPEN_WEATHER_API_URL = 'http://api.openweathermap.org/data/2.5';
-const OPEN_WEATHER_KEY = '7ba73e0eb8efe773ed08bfd0627f07b8';
-const OPEN_WEATHER_FORECAST_API = `/forecast`;
-const OPEN_WEATHER_WEATHER_API = `/weather`;
+const {
+  OPEN_WEATHER_KEY,
+  OPEN_WEATHER_API_FORECAST,
+  OPEN_WEATHER_API_WEATHER,
+} = process.env;
+
+export function createUrl(baseUrl, params) {
+  return `${baseUrl}?${queryString.stringify(params)}`;
+}
 
 export function getForecast(city) {
-  const params = `?q=${city}&APPID=${OPEN_WEATHER_KEY}&cnt=3&units=metric`;
-  const url = ''.concat(
-    OPEN_WEATHER_API_URL,
-    OPEN_WEATHER_FORECAST_API,
-    params,
-  );
+  const params = {
+    q: city,
+    APPID: OPEN_WEATHER_KEY,
+    cnt: 3,
+    units: 'metric',
+  };
+  const url = createUrl(OPEN_WEATHER_API_FORECAST, params);
 
   return axios.get(url).then(({ data }) => {
     if (data.list) {
@@ -32,8 +39,11 @@ export function getForecast(city) {
 }
 
 export function getWeather(city) {
-  const params = `?q=${city}&APPID=${OPEN_WEATHER_KEY}`;
-  const url = ''.concat(OPEN_WEATHER_API_URL, OPEN_WEATHER_WEATHER_API, params);
+  const params = {
+    q: city,
+    APPID: OPEN_WEATHER_KEY,
+  };
+  const url = createUrl(OPEN_WEATHER_API_WEATHER, params);
 
   return axios.get(url).then(({ data }) => {
     const {
