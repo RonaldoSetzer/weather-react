@@ -30,7 +30,7 @@ export const withChildren = () => (
   <Container>
     <WeatherCard
       label="Today"
-      icon={<ClearDay />}
+      iconId="01d"
       tempUnit="fahrenheit"
       temperature={temperature}
       backgroundColor={normal}
