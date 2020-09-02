@@ -1,3 +1,5 @@
+import { mapIcon } from './weatherIcon';
+
 const compass = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N'];
 // const compass = ['N', 'E', 'S', 'W', 'N'];
 
@@ -39,8 +41,11 @@ export function mapWeather({
   humidity,
   description,
   wind = { speed: undefined, deg: undefined },
+  id,
+  icon,
 }) {
   return {
+    iconId: mapIcon({ icon, id }),
     description: formatDescription(description),
     wind: formatWind(wind),
     pressure: formatPressure(pressure),

@@ -43,9 +43,11 @@ export function getWeather(city) {
     } = data;
 
     console.log(data);
-    const { description } = weather[0];
+    const { description, icon, id } = weather[0];
 
     const result = mapWeather({
+      icon,
+      id,
       description,
       wind,
       humidity,
