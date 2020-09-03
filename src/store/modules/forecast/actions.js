@@ -11,3 +11,7 @@ export function requestForecast(city) {
     city,
   };
 }
+
+export function resetForecast() {
+  return { type: '@forecast/RESET' };
+}

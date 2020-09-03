@@ -8,9 +8,12 @@ const initialState = {
 
 function forecast(state = initialState, action) {
   switch (action.type) {
-    case '@forecast/UPDATE': {
+    case '@forecast/UPDATE':
       return { ...action.forecast };
-    }
+
+    case '@forecast/RESET':
+      return { ...initialState };
+
     default:
       return state;
   }
