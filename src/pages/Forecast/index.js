@@ -6,13 +6,14 @@ import WeatherCard from '../../components/WeatherCard';
 import WeatherInfo from '../../components/WeatherInfo';
 
 import { Title, List } from '../../components/ui';
-import { Container, Background } from './styles';
+import { Container, Background, ShadowBox } from './styles';
 import { getBgColorByTemperature } from '../../helpers/temperature';
 
 import useSearch from '../../hooks/useSearch';
 import useTemperatureUnit from '../../hooks/useTemperatureUnit';
 import useGeolocation from '../../hooks/useGeolocation';
 import useLoading from '../../hooks/useLoading';
+import { Loading } from '../../assets/icons';
 
 function Forecast() {
   const weather = useSelector(state => state.weather);
@@ -54,6 +55,9 @@ function Forecast() {
           {...forecast.afterTomorrow}
         />
       </Container>
+      <ShadowBox isLoading={isLoading}>
+        <Loading />
+      </ShadowBox>
     </Background>
   );
 }
