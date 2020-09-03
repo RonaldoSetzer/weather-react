@@ -14,6 +14,11 @@ export const Container = styled.main`
   margin-right: auto;
 `;
 
+export const Cards = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const ShadowBox = styled.div`
   display: ${props => (props.isLoading ? 'flex' : 'none')};
   background: rgba(0, 0, 0, 0.3);

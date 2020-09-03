@@ -13,7 +13,7 @@ function forecast(state = initialState, action) {
       return { ...action.forecast, isEmpty: false };
 
     case '@forecast/RESET':
-      return { ...initialState };
+      return { ...initialState, isEmpty: true };
 
     default:
       return state;
