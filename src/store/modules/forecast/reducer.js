@@ -1,6 +1,7 @@
 import { mapTemperature } from '../../../helpers/temperature';
 
 const initialState = {
+  isEmpty: true,
   today: mapTemperature(null, 0),
   tomorrow: mapTemperature(null, 1),
   afterTomorrow: mapTemperature(null, 2),
@@ -9,7 +10,7 @@ const initialState = {
 function forecast(state = initialState, action) {
   switch (action.type) {
     case '@forecast/UPDATE':
-      return { ...action.forecast };
+      return { ...action.forecast, isEmpty: false };
 
     case '@forecast/RESET':
       return { ...initialState };
