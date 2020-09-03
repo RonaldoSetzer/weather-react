@@ -10,4 +10,9 @@ services:
     volumes:
       - '/app/node_modules'
       - './:/app'
+  storybook:
+    build: .
+    command: yarn storybook
+    ports:
+      - '6006:6006'
 
