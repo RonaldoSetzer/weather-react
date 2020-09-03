@@ -12,20 +12,26 @@ import { getBgColorByTemperature } from '../../helpers/temperature';
 import useSearch from '../../hooks/useSearch';
 import useTemperatureUnit from '../../hooks/useTemperatureUnit';
 import useGeolocation from '../../hooks/useGeolocation';
+import useLoading from '../../hooks/useLoading';
 
 function Forecast() {
   const weather = useSelector(state => state.weather);
   const forecast = useSelector(state => state.forecast);
   const { unit, toggleUnit } = useTemperatureUnit();
   const { address } = useGeolocation();
-  const { search } = useSearch(address);
+  const { search, query } = useSearch(address);
+  const { isLoading } = useLoading(query, weather, forecast);
 
   const background = getBgColorByTemperature();
 
   return (
     <Background background={background}>
       <Container>
-        <SearchBox userAddress={address} handleSearch={search} />
+        <SearchBox
+          isLoading={isLoading}
+          userAddress={address}
+          handleSearch={search}
+        />
         <WeatherCard
           label="Today"
           iconId={weather.iconId}
