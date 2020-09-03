@@ -11,3 +11,7 @@ export function requestWeather(city) {
     city,
   };
 }
+
+export function resetWeather() {
+  return { type: '@weather/RESET' };
+}

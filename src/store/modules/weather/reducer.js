@@ -4,9 +4,11 @@ const initialState = mapWeather({});
 
 function weather(state = initialState, action) {
   switch (action.type) {
-    case '@weather/UPDATE': {
+    case '@weather/UPDATE':
       return { ...action.weather };
-    }
+
+    case '@weather/RESET':
+      return { ...initialState };
 
     default:
       return state;
