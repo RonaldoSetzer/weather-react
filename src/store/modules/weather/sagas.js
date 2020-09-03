@@ -4,6 +4,7 @@ import { updateWeather, resetWeather } from './actions';
 import { getWeather } from '../../../services/openWeatherAPI';
 
 function* requestWeather({ city }) {
+  yield put(resetWeather());
   try {
     const payload = yield call(getWeather, city);
 

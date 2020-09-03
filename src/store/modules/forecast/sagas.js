@@ -4,6 +4,7 @@ import { updateForecast, resetForecast } from './actions';
 import { getForecast } from '../../../services/openWeatherAPI';
 
 function* requestForecast({ city }) {
+  yield put(resetForecast());
   try {
     const payload = yield call(getForecast, city);
 
