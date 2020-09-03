@@ -1,4 +1,5 @@
 import { mapTemperature } from '../../../helpers/temperature';
+import Types from './ActionTypes';
 
 const initialState = {
   isEmpty: true,
@@ -9,10 +10,10 @@ const initialState = {
 
 function forecast(state = initialState, action) {
   switch (action.type) {
-    case '@forecast/UPDATE':
+    case Types.FORECAST_UPDATE:
       return { ...action.forecast, isEmpty: false };
 
-    case '@forecast/RESET':
+    case Types.FORECAST_RESET:
       return { ...initialState, isEmpty: true };
 
     default:

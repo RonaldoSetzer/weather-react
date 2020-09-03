@@ -1,5 +1,6 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { updateForecast, resetForecast } from './actions';
+import Types from './ActionTypes';
 
 import { getForecast } from '../../../services/openWeatherAPI';
 
@@ -16,4 +17,4 @@ function* requestForecast({ city }) {
   }
 }
 
-export default all([takeLatest('@forecast/REQUEST', requestForecast)]);
+export default all([takeLatest(Types.FORECAST_REQUEST, requestForecast)]);

@@ -1,13 +1,14 @@
 import { mapWeather } from '../../../helpers/weather';
+import Types from './ActionTypes';
 
 const initialState = mapWeather({});
 
 function weather(state = initialState, action) {
   switch (action.type) {
-    case '@weather/UPDATE':
+    case Types.WEATHER_UPDATE:
       return { ...action.weather, isEmpty: false };
 
-    case '@weather/RESET':
+    case Types.WEATHER_RESET:
       return { ...initialState, isEmpty: true };
 
     default:
