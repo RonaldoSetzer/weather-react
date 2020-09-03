@@ -17,9 +17,10 @@ function SearchBox({ handleSearch, userAddress, isLoading }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit} isLoading={isLoading}>
+    <Form id="search-form" onSubmit={handleSubmit} isLoading={isLoading}>
       <Compass />
       <input
+        id="search-input"
         defaultValue={userAddress}
         onChange={handleChange}
         placeholder="Type a city"
