@@ -1,13 +1,17 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
-import { updateForecast } from './actions';
+import { updateForecast, resetForecast } from './actions';
 
 import { getForecast } from '../../../services/openWeatherAPI';
 
 function* requestForecast({ city }) {
-  const payload = yield call(getForecast, city);
+  try {
+    const payload = yield call(getForecast, city);
 
-  if (payload) {
-    yield put(updateForecast(payload));
+    if (payload) {
+      yield put(updateForecast(payload));
+    }
+  } catch (err) {
+    yield put(resetForecast());
   }
 }
 
