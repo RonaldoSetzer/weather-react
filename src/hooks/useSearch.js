@@ -4,18 +4,21 @@ import { useDispatch } from 'react-redux';
 import { requestForecast } from '../store/modules/forecast/actions';
 import { requestWeather } from '../store/modules/weather/actions';
 
-function useSearch() {
-  const [search, setSearch] = useState();
+function useSearch(query) {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (search) {
-      dispatch(requestWeather(search));
-      dispatch(requestForecast(search));
+  function search(query) {
+    if (query) {
+      dispatch(requestWeather(query));
+      dispatch(requestForecast(query));
     }
-  }, [search]);
+  }
 
-  return { search: setSearch };
+  useEffect(() => {
+    search(query);
+  }, [query]);
+
+  return { search };
 }
 
 export default useSearch;
