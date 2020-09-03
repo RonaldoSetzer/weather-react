@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Form } from './styles';
 import { Compass } from '../../assets/icons';
 
-function SearchBox({ handleSearch }) {
-  const [city, setCity] = useState('');
+function SearchBox({ handleSearch, userAddress }) {
+  const [city, setCity] = useState(userAddress);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,7 +19,11 @@ function SearchBox({ handleSearch }) {
   return (
     <Form onSubmit={handleSubmit}>
       <Compass />
-      <input onChange={handleChange} placeholder="Type a city" />
+      <input
+        defaultValue={userAddress}
+        onChange={handleChange}
+        placeholder="Type a city"
+      />
     </Form>
   );
 }
