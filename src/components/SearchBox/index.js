@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Form } from './styles';
 import { Compass } from '../../assets/icons';
 
-function SearchBox({ handleSearch, userAddress }) {
+function SearchBox({ handleSearch, userAddress, isLoading }) {
   const [city, setCity] = useState(userAddress);
 
   function handleSubmit(e) {
@@ -17,7 +17,7 @@ function SearchBox({ handleSearch, userAddress }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} isLoading={isLoading}>
       <Compass />
       <input
         defaultValue={userAddress}

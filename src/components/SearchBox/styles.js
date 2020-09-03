@@ -1,4 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const loading = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 export const Form = styled.form`
   display: flex;
@@ -11,6 +20,12 @@ export const Form = styled.form`
     margin-right: 0.5rem;
     width: 64px;
     height: 64px;
+    animation: ${loading} 1s linear infinite;
+    transform: translateZ(0);
+    ${props =>
+      props.isLoading
+        ? 'animation-play-state:running;'
+        : 'animation-play-state:paused;'}
   }
 
   input,
