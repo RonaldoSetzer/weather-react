@@ -10,11 +10,4 @@ services:
     volumes:
       - '/app/node_modules'
       - './:/app'
-    depends_on:
-      - proxy
-  proxy:
-    build: .
-    command: yarn proxy
-    ports:
-      - '3001:3001'
 
