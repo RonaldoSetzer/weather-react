@@ -12,7 +12,8 @@
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6006",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "test:e2e": "yarn cypress open"
   },
   "dependencies": {
     "axios": "^0.20.0",
@@ -40,6 +41,7 @@
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
+    "cypress": "^5.1.0",
     "eslint": "^7.7.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
