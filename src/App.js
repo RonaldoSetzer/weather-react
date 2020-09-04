@@ -1,9 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import GlobalStyles from './styles/global';
-import Forecast from './pages/Forecast';
 import PhotoBackground from './components/PhotoBackground';
+import Header from './components/Header';
+import Routes from './Routes';
 
 import './config/Reactotron';
 import store from './store';
@@ -13,7 +15,10 @@ function App() {
     <Provider store={store}>
       <GlobalStyles />
       <PhotoBackground>
-        <Forecast />
+        <BrowserRouter>
+          <Header />
+          <Routes />
+        </BrowserRouter>
       </PhotoBackground>
     </Provider>
   );
