@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import media from 'styled-media-query';
 
 const loading = keyframes`
   from {
@@ -26,6 +27,11 @@ export const Form = styled.form`
       props.isLoading
         ? 'animation-play-state:running;'
         : 'animation-play-state:paused;'}
+
+  ${media.lessThan('small')`
+    width: 48px;
+    height: 48px;
+  `}
   }
 
   input,
@@ -35,5 +41,9 @@ export const Form = styled.form`
     outline: none;
     border: none;
     color: var(--color-inverse);
+
+    ${media.lessThan('small')`
+    font-size:1.5rem;
+  `}
   }
 `;

@@ -1,6 +1,12 @@
 import React from 'react';
 
-import { Container, Content, IconContainer, Button } from './styles';
+import {
+  Container,
+  Content,
+  IconContainer,
+  Button,
+  Temperature,
+} from './styles';
 import { Title } from '../../components/ui';
 import { getWeatherIconById } from '../../assets/icons';
 
@@ -19,8 +25,10 @@ function WeatherCard(props) {
     <Container backgroundColor={backgroundColor}>
       <IconContainer>{IconComponent && <IconComponent />}</IconContainer>
       <Content>
-        <Title uppercase>{label}</Title>
-        <Button onClick={handleClick}>{temperature[tempUnit]}</Button>
+        <Temperature>
+          <Title uppercase>{label}</Title>
+          <Button onClick={handleClick}>{temperature[tempUnit]}</Button>
+        </Temperature>
         {children && children}
       </Content>
     </Container>
