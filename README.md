@@ -1,55 +1,129 @@
+![Gif App](./resource/gif-app.gif)
+
+# Ronaldo Santiago - Desafio Charlie
+
+Rapidinho você faz, é só uma tela, é muito comum ouvir esta frase no meio da tecnologia, mas a verdade ė que as aparências enganam, e essa é magia de um bom desafio.
+
+Overengineering ou no ditado popular "dar tiro de bazooka em formiga" é a melhor maneira de descrever o processo de desenvolvimento desta aplicação, deixando claro que o intuito em nenhum momento foi se em criar algo de maneira simples, muito pelo contrário, foi expor conhecimentos relevantes, seja em simples tecnologias de Frontend a configurações complexas.
+
+A experiência foi tao prazerosa que eu poderia ficar semanas dando continuidade ao desenvolvimento, confesso que já criei um mini backlog no Jira para futuras features.
+
+O Projeto foi desenvolvido utilizando as seguintes combinações de tecnologia:
+
+- _Frontend:_ React + Styled Components (css-in-js).
+- _Gerenciamento de estado:_ Redux + Redux Saga + React Hooks.
+- _Documentacao:_ Storybook
+- _Testes:_ Jest (unit-test) + Cypress (e2e)
+- _Bundle:_ Webpack
+- _Ambiente de desenvolvimento:_ Docker + Docker-Compose
+- _Code:_ JavaScript + Eslint + Prettier
+- _Git:_ semantic commit messages
+
+## Inicializacao
+
+```shell
+git clone $repositorio
+cd $repositorio
+# with docker
+docker-compose up --build
+# sem docker
+yarn dev # inicia a aplicacao port: 3000
+yarn storybook # inicia o storybook port: 6006
+yarn test # roda os testes unitarios (jest)
+yarn test:e2e # roda os testes end-to-end (cypress)
+```
+
+## Tecnologias
+
+- [react](https://pt-br.reactjs.org/)
+- [hooks](https://pt-br.reactjs.org/docs/hooks-intro.html)
+- [redux](https://redux.js.org/)
+- [redux-saga](https://redux-saga.js.org/)
+- [react-router-dom](https://reactrouter.com/web/guides/quick-start)
+- [react-icons](http://react-icons.github.io/react-icons)
+- [jest](https://jestjs.io/)
+- [storybook](https://storybook.js.org/)
+- [styled-components](https://styled-components.com/)
+- [prettier](https://prettier.io/)
+- [eslint](https://eslint.org/)
+- [webpack](https://webpack.js.org/)
+- [babel](https://babeljs.io/)
+- [axios](https://github.com/axios/axios)
+- [polished](https://polished.js.org/)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [docker](https://www.docker.com/)
+- [docker-compose](https://docs.docker.com/compose/)
+
+## Screens
+
+### Storybook
+
+![Gif Storybook](./resource/gif-storybook.gif)
+
+### Cypress
+
+![Gif Cypress](./resource/gif-cypress.gif)
+
+### App Mobile version
+
+![App Mobile version](./resource/ss-mobile.png)
+
+### Jest
+
+![Jest](./resource/ss-jest.png)
+
 # <img src="https://avatars1.githubusercontent.com/u/7063040?v=4&s=200.jpg" alt="HU" width="24" /> Desafio Charlie
 
-Construa um microsite responsivo para mostrar a previso do tempo nas localidades informadas na caixa de texto branca (na imagem de [exemplo](./resource/layout.jpg)  o local aonde aparece "Rio de Janeiro, Rio de Janeiro"). Essa caixa de texto deve ser um `input`, aonde o usurio pode trocar a localidade. Com a mudana da localidade, devem ser carregadas as informaes de previso do tempo referentes  nova localidade.
+Construa um microsite responsivo para mostrar a previsão do tempo nas localidades informadas na caixa de texto branca (na imagem de [exemplo](./exemplo.jpg) é o local aonde aparece "Rio de Janeiro, Rio de Janeiro"). Essa caixa de texto deve ser um `input`, aonde o usuário pode trocar a localidade. Com a mudança da localidade, devem ser carregadas as informações de previsão do tempo referentes à nova localidade.
 
- Logo que a pgina seja aberta deve ser coletada as coordenadas geogrficas do usurio pela API do navegador para ento se descobrir o nome da cidade via _reverse geocode_.
+Logo que a página seja aberta deve ser coletada as coordenadas geográficas do usuário pela API do navegador para então se descobrir o nome da cidade via _reverse geocode_.
 
-Como fundo de tela deve ser usado a imagem de destaque do Bing. Devem ser mostradas as previses para: hoje, amanh e depois de amanh.
+Como fundo de tela deve ser usado a imagem de destaque do Bing. Devem ser mostradas as previsões para: hoje, amanhã e depois de amanhã.
 
-Note que existe um degrad sobreposto na imagem original, na verdade essa cor reflete a temperatura atual do lugar buscado para as trs datas. Para temperaturas abaixo de 15¼C deve ser usado tons de azul, para temperaturas acima de 35¼C deve ser usado tons de vermelho e use tons de amarelo para as demais temperaturas. Quando no houver nenhuma localidade escolhida deve ser usado tons de cinza como base para o degrad. Se o usurio clicar em qualquer temperatura, as temperaturas devem ser alteradas de Celsius para Fahrenheit ou de Fahrenheit para Celsius.
+Note que existe um degradê sobreposto na imagem original, na verdade essa cor reflete a temperatura atual do lugar buscado para as três datas. Para temperaturas abaixo de 15ºC deve ser usado tons de azul, para temperaturas acima de 35ºC deve ser usado tons de vermelho e use tons de amarelo para as demais temperaturas. Quando não houver nenhuma localidade escolhida deve ser usado tons de cinza como base para o degradê. Se o usuário clicar em qualquer temperatura, as temperaturas devem ser alteradas de Celsius para Fahrenheit ou de Fahrenheit para Celsius.
 
 A URL da imagem de fundo deve ser extraida da [API do Bing](https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=pt-BR).
 
-Para consultar a previso do tempo, utilize a do [OpenWeather](http://api.openweathermap.org/data/2.5/weather?q={{location_name}}&APPID=7ba73e0eb8efe773ed08bfd0627f07b8) informando o nome da localidade no lugar de `{{location_name}}` usando a app id `7ba73e0eb8efe773ed08bfd0627f07b8`. Caso necessrio, crie uma nova conta.
+Para consultar a previsão do tempo, utilize a do [OpenWeather](http://api.openweathermap.org/data/2.5/weather?q={{location_name}}&APPID=7ba73e0eb8efe773ed08bfd0627f07b8) informando o nome da localidade no lugar de `{{location_name}}` usando a app id `7ba73e0eb8efe773ed08bfd0627f07b8`. Caso necessário, crie uma nova conta.
 
-Para converter latitude e longitude em uma localidade utilize o [OpenCage](https://api.opencagedata.com/geocode/v1/json?q={{latitude}},{{longitude}}&key=c63386b4f77e46de817bdf94f552cddf&language=en) usando a API key `c63386b4f77e46de817bdf94f552cddf`. Caso necessrio, crie uma nova conta.
+Para converter latitude e longitude em uma localidade utilize o [OpenCage](https://api.opencagedata.com/geocode/v1/json?q={{latitude}},{{longitude}}&key=c63386b4f77e46de817bdf94f552cddf&language=en) usando a API key `c63386b4f77e46de817bdf94f552cddf`. Caso necessário, crie uma nova conta.
 
-Os cones podem ser encontrados em http://www.alessioatzeni.com/meteocons/.
+Os ícones podem ser encontrados em http://www.alessioatzeni.com/meteocons/.
 
-O layout deve ser seguido, mas voc pode sugerir melhorias. Descreva essas melhorias no README e diga o por que delas. Voc ganha pontos extras se essas melhorias forem positivas, ou perde pontos do contrrio.
+O layout deve ser seguido, mas você pode sugerir melhorias. Descreva essas melhorias no README e diga o por que delas. Você ganha pontos extras se essas melhorias forem positivas, ou perde pontos do contrário.
 
 ## Requisitos
 
--   Preferencialmente faa em React, mas voc pode usar outras bibliotecas ou frameworks (Angular, Vue.js, etc) ou JavaScript puro (Vanilla JS).
--   Para a folha de estilo, voc pode usar o que preferir (CSS, SASS, LESS, CSS Modules, CSS-in-JS, etc).
--   Preferencialmente use Webpack. Se preferir, voc pode usar [create-react-app](https://github.com/facebook/create-react-app) ou similares. Fazer o prprio setup do Webpack da pontos extras.
--    interessante que sua aplicao esteja pronta para produo. Criar no Docker um `stage` para produo e um para desenvolvimento da pontos extras.
--   Forkar esse desafio e criar o seu projeto (ou workspace) usando a sua verso desse repositrio, to logo acabe o desafio, submeta um _pull request_.
-    -   Caso voc tenha algum motivo para no submeter um _pull request_, crie um repositrio privado no Github, faa todo desafio na branch **master** e no se esquea de preencher o arquivo `pull-request.txt`. To logo termine seu desenvolvimento, adicione como colaborador o usurio [`automator-hurb`](https://github.com/automator-hurb) no seu repositrio e o deixe disponvel por pelo menos 30 dias. **No adicione o `automator-hurb` antes do trmino do desenvolvimento.**
-    -   Caso voc tenha algum problema para criar o repositrio privado, ao trmino do desafio preencha o arquivo chamado `pull-request.txt`, comprima a pasta do projeto - incluindo a pasta `.git` - e nos envie por email.
--   O cdigo precisa rodar dentro de um container Docker.
--   Para executar seu cdigo, deve ser preciso apenas rodar os seguintes comandos:
-    -   git clone \$seu-fork
-    -   cd \$seu-fork
-    -   comando para instalar dependncias
-    -   comando para executar a aplicao
+- Preferencialmente faça em React, mas você pode usar outras bibliotecas ou frameworks (Angular, Vue.js, etc) ou JavaScript puro (Vanilla JS).
+- Para a folha de estilo, você pode usar o que preferir (CSS, SASS, LESS, CSS Modules, CSS-in-JS, etc).
+- Preferencialmente use Webpack. Se preferir, você pode usar [create-react-app](https://github.com/facebook/create-react-app) ou similares. Fazer o próprio setup do Webpack da pontos extras.
+- É interessante que sua aplicação esteja pronta para produção. Criar no Docker um `stage` para produção e um para desenvolvimento da pontos extras.
+- Forkar esse desafio e criar o seu projeto (ou workspace) usando a sua versão desse repositório, tão logo acabe o desafio, submeta um _pull request_.
+  - Caso você tenha algum motivo para não submeter um _pull request_, crie um repositório privado no Github, faça todo desafio na branch **master** e não se esqueça de preencher o arquivo `pull-request.txt`. Tão logo termine seu desenvolvimento, adicione como colaborador o usuário [`automator-hurb`](https://github.com/automator-hurb) no seu repositório e o deixe disponível por pelo menos 30 dias. **Não adicione o `automator-hurb` antes do término do desenvolvimento.**
+  - Caso você tenha algum problema para criar o repositório privado, ao término do desafio preencha o arquivo chamado `pull-request.txt`, comprima a pasta do projeto - incluindo a pasta `.git` - e nos envie por email.
+- O código precisa rodar dentro de um container Docker.
+- Para executar seu código, deve ser preciso apenas rodar os seguintes comandos:
+  - git clone \$seu-fork
+  - cd \$seu-fork
+  - comando para instalar dependências
+  - comando para executar a aplicação
 
-## Critrio de avaliao
+## Critério de avaliação
 
--   ** executado conforme esperado**: O passo-a-passo pedido para rodar a aplicao funciona?
--   **Organizao do cdigo**: Separao de mdulos e organizao do projeto (back-end e front-end).
--   **Clareza**: O README explica de forma resumida qual  o problema e como pode rodar a aplicao?
--   **Assertividade**: A aplicao est fazendo o que  esperado? Se tem algo faltando, o README explica o porqu?
--   **Legibilidade do cdigo**  fcil ler e entender o cdigo? Existem muitas variveis/funes com nome engmtico? Comentrios no cdigo ajudam a explicar o fluxo?
--   **Segurana**: Existe alguma vulnerabilidade clara?
--   **Cobertura de testes** Qualidade e cobertura dos testes (no esperamos cobertura completa).
--   **Histrico de commits** Qualidade e estrutura dos commits.
--   **UX**: A interface  de fcil uso e auto-explicativa? As rotas/mtodos da API so intuitivos?
--   **Escolhas tcnicas**: A escolha das bibliotecas, arquitetura, etc,  a melhor escolha para a aplicao?
+- **É executado conforme esperado**: O passo-a-passo pedido para rodar a aplicação funciona?
+- **Organização do código**: Separação de módulos e organização do projeto (back-end e front-end).
+- **Clareza**: O README explica de forma resumida qual é o problema e como pode rodar a aplicação?
+- **Assertividade**: A aplicação está fazendo o que é esperado? Se tem algo faltando, o README explica o porquê?
+- **Legibilidade do código** É fácil ler e entender o código? Existem muitas variáveis/funções com nome engmático? Comentários no código ajudam a explicar o fluxo?
+- **Segurança**: Existe alguma vulnerabilidade clara?
+- **Cobertura de testes** Qualidade e cobertura dos testes (não esperamos cobertura completa).
+- **Histórico de commits** Qualidade e estrutura dos commits.
+- **UX**: A interface é de fácil uso e auto-explicativa? As rotas/métodos da API são intuitivos?
+- **Escolhas técnicas**: A escolha das bibliotecas, arquitetura, etc, é a melhor escolha para a aplicação?
 
-## Dvidas
+## Dúvidas
 
-Quaisquer dvidas que voc venha a ter, consulte as [_issues_](https://github.com/HurbCom/challenge-charlie/issues) para ver se algum j no a fez e caso voc no ache sua resposta, abra voc mesmo uma nova issue!
+Quaisquer dúvidas que você venha a ter, consulte as [_issues_](https://github.com/HurbCom/challenge-charlie/issues) para ver se alguém já não a fez e caso você não ache sua resposta, abra você mesmo uma nova issue!
 
 Boa sorte e boa viagem! ;)
 
